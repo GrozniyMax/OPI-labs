@@ -1,0 +1,88 @@
+# R0
+git init
+
+git config user.name red
+git config user.email "red@m.com"
+
+git checkout -b red-branch
+git add .
+git commit -m "R0" --author "red <red@m.com>"
+git tag r0 HEAD
+
+#R1
+git checkout -b blue-one red-branch
+git add .
+git commit -m "R1" --author "blue <blue@m.com>"
+git tag r1 HEAD
+
+#R2
+git add .            
+git commit -m "R2" --author "blue <blue@m.com>"
+git tag r2 HEAD
+
+#R3
+git checkout red-branch 
+git add .
+git commit -m "R3" --author "blue <blue@m.com>"
+git tag r3 HEAD
+
+#R4
+git checkout -b blue-two red-branch
+git commit -a -m "R4" --author "blue <blue@m.com>"
+git tag r4 HEAD
+
+#R5
+git checkout red-branch
+git commit -a -m "R5"
+git tag r5 HEAD
+
+#R6
+git checkout blue-two
+git commit -a -m "R6" --author "blue <blue@m.com>"
+git tag r6 HEAD
+
+#R7
+git checkout blue-one
+git commit -a -m "R7" --author "blue <blue@m.com>"
+git tag r7 HEAD
+
+#R8
+git checkout red-branch
+git commit -a -m "R8"
+git tag r8 HEAD
+
+
+#R9
+git checkout blue-two 
+git commit -a -m "R9" --author "blue <blue@m.com>"
+git tag r9 HEAD
+
+#R10
+git commit -a -m "R10" --author "blue <blue@m.com>"
+git tag r10 HEAD
+
+#R11
+git checkout blue-one
+git commit -a -m "R11" --author "blue <blue@m.com>"
+git tag r11 HEAD
+
+#R12
+git merge blue-two
+git status
+#resolving...
+git add src/Main.java 
+git commit --author "blue <blue@m.com>"
+git tag r12 HEAD
+
+#R13
+git checkout red-branch
+git merge blue-one
+git status
+#resolving ...
+git add src/Main.java 
+git commit
+git tag r13 HEAD
+
+#R14
+git commit -a -m "R14"
+git tag r14 HEAD

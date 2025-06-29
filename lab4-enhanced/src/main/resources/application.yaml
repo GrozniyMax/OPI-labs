@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: web-lab4-back
+
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/studs
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    user:
+      name: max
+      password: qwerty1234
+
+logging:
+  level:
+    org.springframework.security: DEBUG?
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+  metrics:
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
+  prometheus:
+    metrics:
+      export:
+        enabled: true

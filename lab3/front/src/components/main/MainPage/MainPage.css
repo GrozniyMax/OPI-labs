@@ -1,0 +1,24 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.canvas-column,
+.controls-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,31 @@
+.input {
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5rem 1rem; /* Внутренние отступы */
+    width: 100%; /* Поле занимает всю ширину родителя */
+    margin-bottom: 1rem;
+    font-size: 1rem; /* Размер текста */
+    line-height: 1.5; /* Высота строки */
+    box-sizing: border-box; /* Учитывает padding в общей ширине/высоте */
+    outline: none; /* Убирает стандартное выделение */
+    height: auto; /* Автоматическая высота */
+}
+
+
+.label {
+    margin: 1rem;
+}
+
+.register {
+    background: transparent;
+    color: white;
+    margin: 1rem;
+    text-align: start;
+}
+
+.error {
+    margin-top: 0rem;
+    font-size: medium;
+    color: #ad1420;
+}

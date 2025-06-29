@@ -1,0 +1,40 @@
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.styled-table {
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table thead tr {
+    color: #ffffff;
+    background-color: #484747;
+    font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 10px 15px;
+    border: 1px solid #3a3a3a;
+}
+
+.styled-table .success {
+    color: #33b400;
+    font-weight: bold;
+}
+
+.styled-table .failure {
+    color: #b00000;
+    font-weight: bold;
+}

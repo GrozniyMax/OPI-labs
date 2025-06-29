@@ -1,0 +1,7 @@
+header {
+    display: flex;
+    justify-content: space-between; /* Размещает элементы на расстоянии по краям */
+    margin-right: 3rem;
+    align-items: center; /* Выравнивает элементы по вертикали */
+    width: 100%; /* Обеспечивает, что хедер будет растянут на всю ширину */
+}

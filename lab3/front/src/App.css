@@ -1,0 +1,22 @@
+#root {
+  /*max-width: 1280px;*/
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  /* Flexbox настройки */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрирует по горизонтали */
+  justify-content: flex-start; /* Прижимает контент к верху */
+  min-height: 100vh; /* Высота контейнера на весь экран */
+  box-sizing: border-box;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
