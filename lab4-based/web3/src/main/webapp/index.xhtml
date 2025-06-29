@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Title</title>
+    <h:outputStylesheet>
+        .r-input {
+            color: black;
+            font-size: 24px;
+            display: block;
+        }
+        .r-input:hover{
+            color: darkblue;
+        }
+    </h:outputStylesheet>
+
+    <h:outputScript target="head">
+        function sendClickCoordinates(event) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+            // Trigger PrimeFaces AJAX event to send the coordinates to the server
+            sendCoordinates([{name: 'x', value: x}, {name: 'y', value: y}]);
+        }
+
+        function handleResult(xhr, status, args) {
+            let audio;
+            if (args.result) {
+                console.log('Hit');
+                audio = new Audio('sound/hit.mp3');
+
+            } else {
+                console.log('Miss');
+                audio = new Audio('sound/miss.mp3');
+            }
+            audio.play();
+
+        }
+    </h:outputScript>
+</h:head>
+
+<h:body>
+    <table width="100%" style="height: 100vh">
+        <tr>
+            <td width="80%" style="background-image: url('images/zenit.jpg');">
+                <p:dataTable id="table" value="#{imageBean.findAll()}" var="thing" paginator="true"
+                             rows="5"
+                             rowKey="#{thing.id}" selectionMode="single" >
+                    <p:column headerText="ID">
+                        <h:outputText value="#{thing.id}"/>
+                    </p:column>
+                    <p:column headerText="X">
+                        <h:outputText value="#{thing.x}"/>
+                    </p:column>
+                    <p:column headerText="Y">
+                        <h:outputText value="#{thing.y}"/>
+                    </p:column>
+                    <p:column headerText="R">
+                        <h:outputText value="#{thing.r}"/>
+                    </p:column>
+                    <p:column headerText="HIT">
+                        <h:outputText value="#{thing.hit}"/>
+                    </p:column>
+                    <p:column headerText="START TIME">
+                        <h:outputText value="#{thing.startTime}">
+                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="END TIME">
+                        <h:outputText value="#{thing.endTime}">
+                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </td>
+            <td>
+                <h:form style="vertical-align: top">
+                    <p:graphicImage id="image" cache="false" value="#{clickBean.image}" width="500" height="500"
+                                    onclick="sendClickCoordinates(event)" style="vertical-align: top"/>
+
+                    <p:remoteCommand name="sendCoordinates" actionListener="#{clickBean.handleCoordinates}"
+                                     process="@this" update="image table" oncomplete="handleResult(xhr, status, args)"/>
+                </h:form>
+                <h:form style="text-align: center; align-items: center">
+                    <h:commandLink value="R=1" action="#{clickBean.setR(1)}" styleClass="r-input"/><br/>
+                    <h:commandLink value="R=1.5" action="#{clickBean.setR(1.5)}" styleClass="r-input"/><br/>
+                    <h:commandLink value="R=2" action="#{clickBean.setR(2)}" styleClass="r-input"/><br/>
+                    <h:commandLink value="R=2.5" action="#{clickBean.setR(2.5)}" styleClass="r-input"/><br/>
+                    <h:commandLink value="R=3" action="#{clickBean.setR(3)}" styleClass="r-input"/><br/>
+                </h:form>
+            </td>
+        </tr>
+    </table>
+</h:body>
+
+</html>

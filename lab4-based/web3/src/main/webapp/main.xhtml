@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Form</title>
+    <h:outputStylesheet>
+        .input-element {
+            color: white;
+            font-size: 24px;
+            horiz-align: center;
+            vertical-align: middle;
+        }
+
+        .special {
+            color: black;
+            font-size: 24px;
+            horiz-align: center;
+            vertical-align: middle;
+        }
+    </h:outputStylesheet>
+
+</h:head>
+
+<h:body style="background-image: url('images/goyda.png')">
+    <h:form>
+        <h1 style="color: white">Форма для ввода данных</h1>
+        <div>
+            <h:selectOneMenu value="#{formBean.x}" converter="jakarta.faces.Float" required="true" styleClass="special">
+                <f:selectItem itemValue="-4" itemLabel="X=-4"/>
+                <f:selectItem itemValue="-3" itemLabel="X=-3"/>
+                <f:selectItem itemValue="-2" itemLabel="X=-2"/>
+                <f:selectItem itemValue="-1" itemLabel="X=-1"/>
+                <f:selectItem itemValue="0" itemLabel="X=+0"/>
+                <f:selectItem itemValue="1" itemLabel="X=+1"/>
+                <f:selectItem itemValue="2" itemLabel="X=+2"/>
+                <f:selectItem itemValue="3" itemLabel="X=+3"/>
+                <f:selectItem itemValue="4" itemLabel="X=+4"/>
+            </h:selectOneMenu>
+        </div>
+        <br/>
+
+        <h:inputText id="y-input" value="#{formBean.y}" required="true"
+                     styleClass="special"
+                     requiredMessage="Значение Y должно быть в диапазоне от -3 до 5" converter="jakarta.faces.Float">
+            <f:validateDoubleRange minimum="-3" maximum="5"/>
+        </h:inputText>
+        <br/>
+
+        <h:commandLink value="R=1" action="#{formBean.submit(1)}" styleClass="input-element"/><br/>
+        <h:commandLink value="R=1.5" action="#{formBean.submit(1.5)}" styleClass="input-element"/><br/>
+        <h:commandLink value="R=2" action="#{formBean.submit(2)}" styleClass="input-element"/><br/>
+        <h:commandLink value="R=2.5" action="#{formBean.submit(2.5)}" styleClass="input-element"/><br/>
+        <h:commandLink value="R=3" action="#{formBean.submit(3)}" styleClass="input-element"/><br/>
+        <br/>
+
+    </h:form>
+
+</h:body>
+
+</html>
